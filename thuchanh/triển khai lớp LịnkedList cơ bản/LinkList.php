@@ -60,6 +60,17 @@ class LinkList{
         }
         $pre->next = $current->next;
     }
+    public function delLast()
+    {
+        $pre = $this->firstNode;
+        $current = $this->firstNode;
+        while ($current->next !== NULL){
+            $pre = $current;
+            $current = $current->next;
+        }
+        $pre->next = NULL;
+
+    }
 
     public function display()
     {
@@ -82,5 +93,6 @@ $linkedList->addFirst(15);
 $linkedList->addLast(50);
 $linkedList->add(2,150);
 $linkedList->del(3);
+$linkedList->delLast();
 echo '<pre>';
 print_r($linkedList->display());
