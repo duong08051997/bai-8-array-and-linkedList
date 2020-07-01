@@ -71,6 +71,39 @@ class LinkList{
         $pre->next = NULL;
 
     }
+    public function search($index)
+    {
+        $current = $this->firstNode;
+        for ($i = 0; $i < $index; $i++) {
+            $current = $current->next;
+        }
+        return $current->getNode();
+    }
+
+    public function contain($obj)
+    {
+        $current = $this->firstNode;
+        while ($current !== NULL){
+            if ($current->getNode()=== $obj) {
+
+                return true;
+            }
+            $current = $current->next;
+        }
+        return false;
+    }
+    public function indexOf($obj)
+    {
+        $arr = $this->display();
+        $arrIndex = [];
+        for ($i = 0; $i < count($arr); $i++) {
+            if ($arr[$i]=== $obj) {
+
+                array_push($arrIndex,$i);
+            }
+        }
+        return $arrIndex;
+    }
 
     public function display()
     {
@@ -90,9 +123,15 @@ $linkedList->addFirst(12);
 $linkedList->addFirst(11);
 $linkedList->addFirst(14);
 $linkedList->addFirst(15);
-$linkedList->addLast(50);
-$linkedList->add(2,150);
-$linkedList->del(3);
-$linkedList->delLast();
+$linkedList->addFirst(10);
+$linkedList->addFirst(15);
+
+//$linkedList->addLast(50);
+//$linkedList->add(2,150);
+//$linkedList->del(3);
+//$linkedList->delLast();
+echo $linkedList->search(2);
+var_dump($linkedList->contain(11));
 echo '<pre>';
 print_r($linkedList->display());
+var_dump($linkedList->indexOf(15));
